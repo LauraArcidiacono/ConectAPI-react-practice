@@ -24,8 +24,9 @@ module.exports = {
     'linebreak-style': 0,
     'global-require': 0,
     'eslint linebreak-style': [0, 'error', 'windows'],
-    'react/function-component-definition': [{
-      namedComponents: 'function-declaration' | 'function-expression' | 'arrow-function'
+    'react/function-component-definition': [0, {
+      namedComponents: ['function-expression', 'arrow-function'],
+      unnamedComponents: ['function-expression', 'arrow-function']
     }]
   }
 };
