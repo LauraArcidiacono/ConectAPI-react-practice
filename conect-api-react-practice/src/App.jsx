@@ -1,12 +1,23 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import './App.css';
+import getGifs from './services/getGifs';
 
 export default function App() {
+  const [gifs, setGifs] = useState([]);
+
+  useEffect(() => {
+    getGifs({}).then((gifsArray) => setGifs(gifsArray));
+  }, ([]));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Practica - Conectatr API</h1>
-      </header>
-    </div>
+    <section className="gif__item">
+      {gifs.map((singleGif) => (
+        <img
+          src={singleGif}
+          alt=""
+          className="gif__item"
+        />
+      ))}
+    </section>
   );
 }
