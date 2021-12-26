@@ -6,7 +6,7 @@ export default function App() {
   const [gifs, setGifs] = useState([]);
 
   useEffect(() => {
-    getGifs({}).then((gifsArray) => setGifs(gifsArray));
+    getGifs({ keyWord: 'susie+myerson' }).then((gifsArray) => setGifs(gifsArray));
   }, ([]));
 
   return (
