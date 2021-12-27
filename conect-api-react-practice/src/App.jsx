@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import './App.css';
 import getGifs from './services/getGifs';
+import Gif from './components/Gif';
 
 export default function App() {
   const [gifs, setGifs] = useState([]);
@@ -10,14 +11,19 @@ export default function App() {
   }, ([]));
 
   return (
-    <section className="gif__item">
-      {gifs.map((singleGif) => (
-        <img
-          src={singleGif}
-          alt=""
-          className="gif__item"
-        />
-      ))}
-    </section>
+    <div className="App">
+      <section className="gif__item">
+        {
+          gifs.map(({ id, title, url }) => (
+            <Gif
+              id={id}
+              key={id}
+              title={title}
+              url={url}
+            />
+          ))
+        }
+      </section>
+    </div>
   );
 }
