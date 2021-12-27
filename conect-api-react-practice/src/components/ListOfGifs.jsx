@@ -1,23 +1,36 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import Gif from './Gif';
 import getGifs from '../services/getGifs';
 
-export default function ListOfGifs({ keyWord }) {
+export default function ListOfGifs({ params }) {
+  const [loading, setLoading] = useState(false);
+
+  const { keyword } = params;
+
   const [gifs, setGifs] = useState([]);
 
   useEffect(() => {
-    getGifs({ keyWord })
+    setLoading(true);
+    getGifs({ keyword })
       .then((gifsArray) => setGifs(gifsArray));
-  }, ([keyWord]));
+    setLoading(false);
+  }, ([keyword]));
+
+  if (loading) return <i>Loading...</i>;
 
   return (
-    gifs.map(({ id, title, url }) => (
-      <Gif
-        id={id}
-        key={id}
-        title={title}
-        url={url}
-      />
-    ))
+    <div>
+      {
+        gifs.map(({ id, title, url }) => (
+          <Gif
+            id={id}
+            key={id}
+            title={title}
+            url={url}
+          />
+        ))
+      }
+    </div>
   );
 }
