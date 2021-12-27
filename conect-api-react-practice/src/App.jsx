@@ -1,18 +1,29 @@
 import { React } from 'react';
 import './App.css';
 import { Route, Link } from 'wouter';
-import ListOfGifs from './components/ListOfGifs';
+import Detail from './pages/Detail/index';
+import Home from './pages/Home/index';
+import SearchResults from './pages/SearchResults';
 
 export default function App() {
   return (
     <div className="App">
       <section className="App__listOfGifs">
         <h1>Connect React + API practice</h1>
-        <Link to="/gif/mrs+maisel">Mrs Maisel</Link>
-        <Link to="/gif/susie+myerson">Susie</Link>
+        <Link to="/">
+          <img src="/logo.png" alt="Giffy Logo" />
+        </Link>
         <Route
-          component={ListOfGifs}
-          path="/gif/:keyword"
+          component={Home}
+          path="/"
+        />
+        <Route
+          component={SearchResults}
+          path="/search/:keyword"
+        />
+        <Route
+          component={Detail}
+          path="/gif/:id"
         />
       </section>
     </div>
