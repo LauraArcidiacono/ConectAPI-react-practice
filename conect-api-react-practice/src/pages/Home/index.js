@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs';
 import useGifs from '../../hooks/useGifs';
