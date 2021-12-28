@@ -1,15 +1,19 @@
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prop-types */
 import React from 'react';
+import useGlobalGifs from '../../hooks/useGlobalGifs';
+import Gif from '../../components/Gif/Gif';
 
 export default function Detail({ params }) {
-  console.log('params.id', params.id);
+  const gifs = useGlobalGifs();
+
+  const gif = gifs.find((singleGif) => singleGif.id === params.id);
+
   return (
-    <h2>
-      GIF con id:
-      {' '}
-      { params.id }
-    </h2>
+    <Gif
+      id={gif.id}
+      url={gif.url}
+      title={gif.title}
+    />
   );
 }

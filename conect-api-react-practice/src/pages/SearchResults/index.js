@@ -12,8 +12,6 @@ export default function SearchResults({ params }) {
   const { keyword } = params;
   const { loading, gifs } = useGifs({ keyword });
 
-  console.log('loadin g y gifs', loading, gifs);
-
   return (
     <>
       {loading
