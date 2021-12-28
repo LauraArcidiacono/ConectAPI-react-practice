@@ -1,31 +1,24 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Spinner from '../../components/Spinner/Spinner';
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs';
-import getGifs from '../../services/getGifs';
+import useGifs from '../../hooks/useGifs';
 
 export default function SearchResults({ params }) {
   const { keyword } = params;
-  const [loading, setLoading] = useState(false);
-  const [gifs, steGifs] = useState([]);
+  const { loading, gifs } = useGifs({ keyword });
 
-  useEffect(() => {
-    setLoading(true);
-    getGifs({ keyword })
-      .then((gifs) => {
-        steGifs(gifs);
-        setLoading(false);
-      });
-  }, [keyword]);
+  console.log('loadin g y gifs', loading, gifs);
 
   return (
-    <section>
+    <>
       {loading
         ? <Spinner />
         : <ListOfGifs gifs={gifs} />}
-    </section>
+    </>
   );
 }
