@@ -8,10 +8,10 @@ import SearchResults from './pages/SearchResults';
 export default function App() {
   return (
     <div className="App">
-      <section className="App__listOfGifs">
+      <section className="App-content">
         <h1>Connect React + API practice</h1>
         <Link to="/">
-          <img src="/logo.png" alt="Giffy Logo" />
+          <img className="App-logo" src="/logo.png" alt="Giffy Logo" />
         </Link>
         <Route
           component={Home}
